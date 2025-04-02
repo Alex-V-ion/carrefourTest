@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.test.Carrefour.model.Order;
-import com.test.Carrefour.model.Product;
 import com.test.Carrefour.repository.OrderRepository;
 
 @Service
@@ -39,12 +38,12 @@ public class OrderService {
             throw new RuntimeException("Product not found");
         }
 
-        existing.setName(updatedOrder.getName());
         try {
 			return orderRepository.save(existing);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+        return null;
     }
 
     public void deleteOrder(Long id) {

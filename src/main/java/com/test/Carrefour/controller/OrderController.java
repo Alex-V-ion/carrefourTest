@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.test.Carrefour.model.Order;
 import com.test.Carrefour.service.OrderService;
 
+@RestController
+@RequestMapping("/orders")
 public class OrderController {
 	private final OrderService orderService;
 
@@ -21,12 +25,12 @@ public class OrderController {
 
     @GetMapping
     public List<Order> getAllLists() {
-        return orderService.getAllProducts();
+        return orderService.getAllOrders();
     }
 
     @GetMapping("/{id}")
     public Order getListById(@PathVariable Long id) {
-        return orderService.getProductById(id)
+        return orderService.getOrderById(id)
                 .orElseThrow(() -> new RuntimeException("List not found"));
     }
 

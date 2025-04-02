@@ -40,13 +40,14 @@ public class ProductService {
 
         existing.setName(updatedProduct.getName());
         try {
-			return ProductRepository.save(existing);
+			return productRepository.save(existing);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+        return null;
     }
 
     public void deleteProduct(Long id) {
-        ProductRepository.deleteById(id);
+        productRepository.deleteById(id);
     }
 }
